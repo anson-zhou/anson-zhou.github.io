@@ -155,16 +155,18 @@
             <b>email:</b>
             <span id="emaddress"><noscript><i>enable javascript to view</i></noscript></span>
           </p>
-            <script>
-              // Scrambled version of "ansonz@stanford.edu"
+          
+          <script>
+            // Ensure /scramble.js is loaded and the DOM is ready
+            window.addEventListener('DOMContentLoaded', function () {
               new scrambledString(
                 document.getElementById("emaddress"),
                 "emscramble",
-                "@ntdoa.nfueazrsonsdst",
-                [8,6,17,4,13,9,11,10,16,5,14,15,12,18,1,19,7,2,3]
+                "drnaz.d@oennfsustao", // 19 chars
+                [18,12,14,19,3,5,8,16,17,4,11,13,9,2,1,6,10,7,15]  // 19 numbers, 1..19
               );
-            </script>
-          </div>
+            });
+          </script>
 
           
       </section>
