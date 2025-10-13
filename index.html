@@ -157,16 +157,17 @@
           </p>
           
           <script>
-            // Ensure /scramble.js is loaded and the DOM is ready
             window.addEventListener('DOMContentLoaded', function () {
-              new scrambledString(
+              // Create a GLOBAL variable so the onclick in scramble.js can call .initAnimatedBubbleSort()
+              window.emscramble = new scrambledString(
                 document.getElementById("emaddress"),
-                "emscramble",
-                "drnaz.d@oennfsustao", // 19 chars
-                [18,12,14,19,3,5,8,16,17,4,11,13,9,2,1,6,10,7,15]  // 19 numbers, 1..19
+                "emscramble",                 // must match the global variable name
+                "ansonz@stanford.edu",        // pass the real email (library scrambles it)
+                [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]  // 19 chars, 1..19
               );
             });
           </script>
+
 
           
       </section>
