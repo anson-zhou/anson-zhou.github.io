@@ -1,16 +1,140 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Anson Zhou – Stanford MD/MBA</title>
-  <meta name="description" content="Official website of Anson Zhou, Stanford MD/MBA and researcher in AI for healthcare.">
-  <meta property="og:title" content="Anson Zhou">
-  <meta property="og:description" content="Stanford MD/MBA · AI in healthcare">
+  <!-- ====== BASIC SEO ====== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anson Zhou – Stanford MD/MBA | AI in Healthcare</title>
+  <meta name="description" content="Official website of Anson Zhou, Stanford MD/MBA candidate and Microsoft Health Futures researcher exploring AI in healthcare." />
+  <meta name="keywords" content="Anson Zhou, Stanford, Knight-Hennessy, Microsoft Health Futures, AI in Healthcare, MD MBA" />
+
+  <!-- ====== OPEN GRAPH / TWITTER ====== -->
+  <meta property="og:title" content="Anson Zhou" />
+  <meta property="og:description" content="Stanford MD/MBA · Knight-Hennessy Scholar · Microsoft Health Futures" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://anson-zhou.github.io/" />
+  <!-- Replace with your image path when you add one -->
+  <meta property="og:image" content="https://anson-zhou.github.io/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- ====== FAVICON (optional) ====== -->
+  <!-- <link rel="icon" href="/favicon.ico"> -->
+
+  <!-- ====== PERSON SCHEMA ====== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Anson Zhou",
+    "url": "https://anson-zhou.github.io",
+    "jobTitle": "MD/MBA Candidate",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Stanford University"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/ansonzhou",
+      "https://scholar.google.com/citations?user=ETbbsnoAAAAJ",
+      "https://orcid.org/0000-0002-XXXX-XXXX",
+      "https://github.com/anson-zhou"
+    ]
+  }
+  </script>
+
+  <!-- ====== STYLE (single-file for simplicity) ====== -->
+  <style>
+    :root{
+      /* THEME — change --bg to set background color */
+      --bg: #ffffff;         /* ← change this to e.g. #f9fafb to tweak quickly */
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0ea5e9;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 8px 30px rgba(2,8,23,.06);
+      --radius: 18px;
+      --maxw: 960px;
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;}
+    nav a{margin-left:16px;font-weight:600}
+    .card{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:var(--radius);padding:28px;}
+    .hero{display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:center}
+    .hero img{width:120px;height:120px;object-fit:cover;border-radius:16px;border:1px solid var(--border)}
+    h1{font-size:32px;line-height:1.2;margin:0}
+    .subtitle{color:var(--muted);margin-top:6px}
+    .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .pill{display:inline-block;border:1px solid var(--border);padding:8px 12px;border-radius:999px;background:#fff}
+    .section{margin-top:26px}
+    footer{margin:36px 0;color:var(--muted);font-size:14px}
+    @media (max-width:720px){
+      .hero{grid-template-columns:1fr}
+      .hero img{width:96px;height:96px}
+      nav{display:none} /* keep clean; you can add a mobile menu later */
+    }
+  </style>
 </head>
-<body style="font-family: system-ui; max-width:720px; margin:10vh auto; padding:0 1rem;">
-  <h1>Anson Zhou</h1>
-  <p>Site placeholder. Updates coming soon.</p>
-  <p><a href="https://www.linkedin.com/in/ansonzhou">LinkedIn</a> · <a href="mailto:you@domain.com">Email</a></p>
+<body>
+  <div class="wrap">
+    <header>
+      <div style="font-weight:800;">Anson Zhou</div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/experiences.html">Experiences</a>
+        <a href="/research.html">Research</a>
+      </nav>
+    </header>
+
+    <main class="card">
+      <!-- ====== HERO: photo + name + subtitle ====== -->
+      <section class="hero">
+        <!-- Upload your image to /assets/profile.jpg -->
+        <img src="/assets/profile.jpg" alt="Anson Zhou portrait" />
+        <div>
+          <h1>Anson Zhou</h1>
+          <div class="subtitle">Stanford MD/MBA · Knight-Hennessy Scholar · Microsoft Health Futures</div>
+
+          <!-- ====== QUICK LINKS (edit freely) ====== -->
+          <div class="links">
+            <a class="pill" href="mailto:you@domain.com">Email</a>
+            <a class="pill" href="https://www.linkedin.com/in/ansonzhou" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="pill" href="https://scholar.google.com/citations?user=ETbbsnoAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="pill" href="https://orcid.org/0000-0002-XXXX-XXXX" target="_blank" rel="noopener">ORCID</a>
+            <a class="pill" href="https://github.com/anson-zhou" target="_blank" rel="noopener">GitHub</a>
+            <a class="pill" href="/assets/Anson_Zhou_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== BIO (edit text only) ====== -->
+      <section class="section">
+        <h2 style="margin:0 0 8px 0;font-size:20px">About</h2>
+        <p>
+          I’m an MD/MBA candidate at Stanford focused on AI in healthcare, currently collaborating with Microsoft Health
+          Futures on real-world evidence and synthetic control arms. I care about patient-centric tools, clinical decision
+          support, and translating research into scalable products.
+        </p>
+      </section>
+
+      <!-- ====== FEATURED LINKS (add/remove items) ====== -->
+      <section class="section">
+        <h2 style="margin:0 0 8px 0;font-size:20px">Highlights</h2>
+        <ul>
+          <li><a href="/research.html">Monopath DAGs: structuring patient trajectories (NeurIPS D&B 2025)</a></li>
+          <li><a href="/experiences.html">Affiliated Researcher – Microsoft Health Futures</a></li>
+          <li><a href="https://denninghouse.stanford.edu/" target="_blank" rel="noopener">Knight-Hennessy Scholars</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Anson Zhou · <a href="/">anson-zhou.github.io</a>
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
