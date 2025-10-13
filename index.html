@@ -14,12 +14,15 @@
   <meta property="og:description" content="Stanford MD/MBA · Knight-Hennessy Scholar · Pear VC" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://anson-zhou.github.io/" />
-  <!-- Make this an absolute URL -->
-  <meta property="og:image" content="https://anson-zhou.github.io/assets/profile.jpg" />
+  <meta property="og:image" content="https://anson-zhou.github.io/images/profile.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- ====== FAVICON (optional) ====== -->
-  <!-- <link rel="icon" href="/favicon.ico"> -->
+  <!-- ====== FAVICON ====== -->
+  
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
 
   <!-- ====== PERSON SCHEMA ====== -->
   <script type="application/ld+json">
@@ -92,7 +95,7 @@
     <main class="card">
       <!-- ====== HERO ====== -->
       <section class="hero">
-        <img src="/assets/profile.jpg" alt="Anson Zhou portrait" />
+        <img src="images/profile.png" alt="Anson Zhou portrait" />
         <div>
           <h1>Anson Zhou</h1>
           <div class="subtitle">Stanford MD/MBA · Knight-Hennessy Scholar · Microsoft Health Futures</div>
@@ -114,16 +117,15 @@
             <span id="emaddress"><noscript><i>enable javascript to view</i></noscript></span>
           </p>
           <script>
-            // This assumes scramble.js defines scrambledString(targetEl, className, scrambled, orderArray)
             window.addEventListener('DOMContentLoaded', function(){
               try {
                 new scrambledString(
                   document.getElementById("emaddress"),
                   "emscramble",
-                  "@cda.bemecys.cueurc",        // ← your scrambled string
-                  [9,13,18,7,12,3,2,14,17,5,8,11,16,10,19,4,15,1,6] // ← permutation
+                  "@cda.bemecys.cueurc",
+                  [9,13,18,7,12,3,2,14,17,5,8,11,16,10,19,4,15,1,6]
                 );
-              } catch(e) { /* fail quietly */ }
+              } catch(e) {}
             });
           </script>
         </div>
@@ -134,13 +136,20 @@
         <h2 style="margin:0 0 8px 0;font-size:20px">About</h2>
         <p>
           Hi! I am an MD/MBA candidate at Stanford University School of Medicine & Graduate School of Business, funded through the Knight-Hennessy Scholarship. I am also a Venture Fellow on the health + bio investing teams at Pear VC.
+        <p>
+
+        <p>  
           I graduated with a BS in biomedical engineering from Johns Hopkins University and was previously a strategy consultant at Bain & Company in its private equity practice. I also worked at Microsoft Research in the Health Futures division, driving strategy for biomedical AI moonshots. 
+        <p>
+
+        <p>  
           My other experiences include startup roles across regenerative medicine and insurtech, pipeline strategy for computational drug discovery, and academic technology transfer. 
+        <p>  
+
+        <p>  
           I am interested in all things healthcare, life sciences, AI/ML, and venture!
         </p>
       </section>
-
-      <!-- (Highlights section removed) -->
     </main>
 
     <footer>
