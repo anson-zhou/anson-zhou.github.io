@@ -1,1 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publications • Your Name</title>
+  <meta name="description" content="Publications by Your Name" />
+  <style>
+    :root{
+      --bg:#ffffff; --fg:#0f172a; --muted:#475569; --card:#f8fafc; --border:#e2e8f0; --accent:#0ea5e9; --tag-bg:#e2f2ff;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b1220; --fg:#e5e7eb; --muted:#94a3b8; --card:#0f1a2b; --border:#1e293b; --tag-bg:#102a43; }
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Noto Sans"; background:var(--bg); color:var(--fg); line-height:1.55;}
+    .wrap{max-width:1000px; margin:0 auto; padding:32px 16px;}
+    header{margin-bottom:24px}
+    header h1{margin:0 0 6px 0; font-size:clamp(24px,4vw,36px); letter-spacing:-0.01em}
+    header p{margin:0; color:var(--muted)}
+    .filter-block{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:16px 0 18px}
+    .filter-label{font-size:13px; color:var(--muted); margin-right:4px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{border:1px solid var(--border); background:transparent; color:var(--muted); padding:6px 10px; border-radius:999px; cursor:pointer; font-size:13px}
+    .chip.active{border-color:var(--accent); color:var(--fg)}
+    .grid{display:grid; gap:14px; grid-template-columns: 1fr}
+    @media (min-width:700px){ .grid{ grid-template-columns: 1fr 1fr } }
+    .pub-card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px; transition:transform .06s ease, box-shadow .06s ease}
+    .pub-card:hover{ transform: translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.08) }
+    .pub-title{margin:0 0 6px 0; font-weight:650; font-size:17px; letter-spacing:-0.01em}
+    .pub-title a{ color:var(--fg); text-decoration:none; border-bottom:1px solid transparent }
+    .pub-title a:hover{ border-bottom-color: var(--accent) }
+    .pub-meta{ font-size:14px; color:var(--muted); margin-bottom:8px }
+    .pub-abstract{ font-size:14px; margin:8px 0 10px; color:var(--fg) }
+    .tagrow{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px }
+    .tag{ font-size:12px; padding:4px 8px; border-radius:999px; background:var(--tag-bg); color:var(--muted); border:1px solid var(--border) }
+    .year-divider{ margin:24px 0 10px; font-weight:700; font-size:16px; color:var(--muted); border-top:1px solid var(--border); padding-top:14px }
+    .toolbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:4px}
+    .search{flex:1; min-width:200px}
+    .search input{width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:transparent; color:var(--fg)}
+    .clear-btn{border:none; background:transparent; color:var(--muted); cursor:pointer; font-size:13px; text-decoration:underline}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Publications</h1>
+      <p>Selected peer-reviewed papers, preprints, abstracts, and patents.</p>
+      <div class="toolbar">
+        <div class="search"><input id="q" type="search" placeholder="Search title, authors, venue…" aria-label="Search publications"></div>
+        <button id="clear" class="clear-btn" type="button">Clear filters</button>
+      </div>
+    </header>
+
+    <!-- Filters -->
+    <div class="filter-block">
+      <span class="filter-label">Type:</span>
+      <div id="typeChips" class="chips"></div>
+    </div>
+    <div class="filter-block">
+      <span class="filter-label">Tags:</span>
+      <div id="tagChips" class="chips"></div>
+    </div>
+
+    <!-- Cards mount -->
+    <div id="pubs" class="grid" aria-live="polite"></div>
+  </main>
+
+  <!-- ======= Paste your Scholar JSON array below ======= -->
+  <script type="application/json" id="pubdata">
+  [
+    /* Replace this array with the JSON printed by your console snippet.
+       You can then add/override "type": "journal|conference|preprint|workshop|patent|abstract"
+       and "tags": ["foo","bar"] per item. Example minimal item:
+       {
+         "title": "Example Paper",
+         "url": "https://example.com",
+         "authors": ["Last, F.", "Coauthor, A."],
+         "venue": "Journal of Great Results",
+         "year": 2025,
+         "type": "journal",
+         "tags": ["sleep","RWE"],
+         "abstract": "Optional one-liner."
+       }
+    */
+  ]
+  </script>
+
+  <!-- ======= Renderer / Logic ======= -->
+  <script>
+    const RAW = JSON.parse(document.getElementById('pubdata').textContent || '[]');
+
+    // --- Type inference for missing/undefined types ---
+    const TYPE_MAP = {
+      journal: /journal|transactions|rev(iew)?|j\.\s|nature|cell|science|lancet|jama|nejm/i,
+      conference: /proceedings|proc\.|conference|conf\.|icml|neurips|nips|cvpr|eccv|acl|emnlp|kdd|aaai|iclr|chi|sig/i,
+      workshop: /workshop|ws\./i,
+      preprint: /arxiv|biorxiv|medrxiv|preprint/i,
+      patent: /patent|us\s?\d{4,}|wo\s?\d{4,}|ep\s?\d{4,}/i,
+      abstract: /abstract|meeting\s+abstract|poster/i
+    };
+    function inferType(p){
+      const hay = [p.venue, p.title].filter(Boolean).join(" · ");
+      for (const [type, regex] of Object.entries(TYPE_MAP)){
+        if (regex.test(hay)) return type;
+      }
+      // Heuristics: conference if "Proceedings"/"International Conference" detected,
+      // else default to 'journal' if venue looks like a journal-ish string with volume/issue cues
+      if (/proceedings|international\s+conference|symposium/i.test(hay)) return 'conference';
+      if (/\bvol\.|\bno\.|\bissue|\bvolume|\bpress\b/i.test(hay)) return 'journal';
+      return 'preprint'; // safest neutral default
+    }
+
+    // Normalize items and apply inference
+    const data = RAW.map(p => {
+      const item = {
+        title: p.title || '',
+        url: p.url || '#',
+        authors: Array.isArray(p.authors) ? p.authors : (p.authors ? String(p.authors).split(/\s*,\s*/) : []),
+        venue: p.venue || '',
+        year: Number(p.year) || undefined,
+        abstract: p.abstract || '',
+        tags: Array.isArray(p.tags) ? p.tags : [],
+        type: p.type
+      };
+      if (!item.type || !String(item.type).trim()){
+        item.type = inferType(item);
+      } else {
+        item.type = String(item.type).toLowerCase();
+      }
+      return item;
+    });
+
+    // --- Filters (Type + Tags + Search) ---
+    const allTypes = Array.from(new Set(data.map(d => d.type))).sort();
+    const allTags  = Array.from(new Set(data.flatMap(d => d.tags || []))).sort((a,b)=>a.localeCompare(b));
+
+    const typeChips = document.getElementById('typeChips');
+    const tagChips  = document.getElementById('tagChips');
+    const qInput    = document.getElementById('q');
+    const clearBtn  = document.getElementById('clear');
+
+    let activeTypes = new Set(); // empty = all
+    let activeTags  = new Set(); // empty = all
+    let query = '';
+
+    function chip(label, group){
+      const el = document.createElement('button');
+      el.className = 'chip';
+      el.type = 'button';
+      el.textContent = label;
+      el.addEventListener('click', () => {
+        const set = group === 'type' ? activeTypes : activeTags;
+        set.has(label) ? set.delete(label) : set.add(label);
+        el.classList.toggle('active');
+        render();
+      });
+      return el;
+    }
+
+    function buildChips(){
+      typeChips.innerHTML = '';
+      const allTypeBtn = chip('All', 'type');
+      allTypeBtn.addEventListener('click', ()=>{
+        activeTypes.clear();
+        [...typeChips.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
+        render();
+      });
+      typeChips.appendChild(allTypeBtn);
+      allTypes.forEach(t => typeChips.appendChild(chip(cap(t), 'type')));
+
+      tagChips.innerHTML = '';
+      const allTagBtn = chip('All', 'tag');
+      allTagBtn.addEventListener('click', ()=>{
+        activeTags.clear();
+        [...tagChips.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
+        render();
+      });
+      tagChips.appendChild(allTagBtn);
+      allTags.forEach(t => tagChips.appendChild(chip(t, 'tag')));
+    }
+
+    qInput.addEventListener('input', e => { query = e.target.value.trim().toLowerCase(); render(); });
+    clearBtn.addEventListener('click', () => {
+      activeTypes.clear(); activeTags.clear(); query=''; qInput.value='';
+      document.querySelectorAll('.chip.active').forEach(c=>c.classList.remove('active'));
+      render();
+    });
+
+    function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+
+    // Group by year
+    function groupByYear(items){
+      return items.reduce((acc, it) => { (acc[it.year||'Undated'] ||= []).push(it); return acc; }, {});
+    }
+
+    // Mount
+    const mount = document.getElementById('pubs');
+
+    function render(){
+      // Filters
+      let items = data.slice();
+      if (activeTypes.size){
+        items = items.filter(d => activeTypes.has(cap(d.type)));
+      }
+      if (activeTags.size){
+        items = items.filter(d => d.tags?.some(t => activeTags.has(t)));
+      }
+      if (query){
+        items = items.filter(d => {
+          const hay = [
+            d.title,
+            d.authors?.join(', '),
+            d.venue,
+            (d.tags||[]).join(', ')
+          ].join(' ').toLowerCase();
+          return hay.includes(query);
+        });
+      }
+
+      // Sort: year desc then title
+      items.sort((a,b)=> (b.year||0)-(a.year||0) || a.title.localeCompare(b.title));
+
+      // Group by year and render
+      const groups = groupByYear(items);
+      const years = Object.keys(groups).sort((a,b)=>{
+        const A = a === 'Undated' ? -Infinity : +a;
+        const B = b === 'Undated' ? -Infinity : +b;
+        return B - A;
+      });
+
+      const frag = document.createDocumentFragment();
+      years.forEach(y => {
+        const div = document.createElement('div');
+        div.className = 'year-divider';
+        div.textContent = y;
+        frag.appendChild(div);
+        groups[y].forEach(p => frag.appendChild(card(p)));
+      });
+      mount.innerHTML = '';
+      mount.appendChild(frag);
+    }
+
+    function card(p){
+      const art = document.createElement('article');
+      art.className = 'pub-card';
+      art.setAttribute('itemscope','');
+      art.setAttribute('itemtype','https://schema.org/ScholarlyArticle');
+
+      const h = document.createElement('h3');
+      h.className = 'pub-title';
+      const a = document.createElement('a');
+      a.href = p.url || '#'; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = p.title; a.setAttribute('itemprop','headline');
+      h.appendChild(a);
+
+      const meta = document.createElement('div');
+      meta.className = 'pub-meta';
+      const typeLabel = p.type ? cap(p.type) : '';
+      const authors = (p.authors||[]).join(', ');
+      const bits = [authors, p.venue, typeLabel].filter(Boolean).join(' • ');
+      meta.textContent = bits;
+
+      const abs = document.createElement('p');
+      abs.className = 'pub-abstract';
+      abs.setAttribute('itemprop','description');
+      abs.textContent = p.abstract || '';
+      if (!p.abstract) abs.style.display = 'none';
+
+      const tagrow = document.createElement('div');
+      tagrow.className = 'tagrow';
+      (p.tags || []).forEach(t=>{
+        const tag = document.createElement('span');
+        tag.className = 'tag';
+        tag.textContent = t;
+        tagrow.appendChild(tag);
+      });
+
+      art.append(h, meta, abs, tagrow);
+      return art;
+    }
+
+    buildChips();
+    render();
+  </script>
+</body>
+</html>
 
