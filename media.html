@@ -40,13 +40,13 @@
     .podcast-section{margin:32px 0;}
     .section-title{font-weight:700;font-size:18px;margin:24px 0 16px 0;color:var(--text)}
     .podcast-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px;margin-bottom:24px}
-    .podcast-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:transform .06s ease,box-shadow .06s ease}
+    .podcast-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:transform .06s ease,box-shadow .06s ease;display:flex;flex-direction:column;align-items:center;text-align:center}
     .podcast-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
     .podcast-icon{width:120px;height:120px;background:linear-gradient(135deg, var(--accent), #0f6db6);border-radius:24px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;font-size:48px;color:white;font-weight:700}
     .podcast-icon.pear{background:linear-gradient(135deg, #10b981, #059669)}
     .podcast-name{font-size:18px;font-weight:650;margin:0 0 8px 0;color:var(--text)}
     .podcast-desc{font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.5}
-    .link-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .link-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
     .link-icon{width:40px;height:40px;border-radius:8px;background:rgba(11,61,145,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:18px;transition:all .1s}
     .link-icon:hover{background:rgba(11,61,145,.15);border-color:var(--accent)}
     .link-label{font-size:12px;color:var(--muted);margin-top:4px;text-align:center}
@@ -74,7 +74,7 @@
     <!-- MAIN CONTENT CARD -->
     <main class="content-card">
       <h1>Media</h1>
-      <p class="subtitle">Podcast appearances and other media coverage.</p>
+      <p class="subtitle">Podcast appearances and other media.</p>
       
       <!-- PODCASTS SECTION -->
       <div class="podcast-section">
@@ -85,40 +85,40 @@
           <div class="podcast-card">
             <div class="podcast-icon">🌍</div>
             <h3 class="podcast-name">Imagine a World</h3>
-            <p class="podcast-desc">Add podcast description here</p>
+            <p class="podcast-desc">Knight-Hennessy Scholars talk about the world they imagine and what they are doing to bring it to life.</p>
             <div class="link-row">
               <div style="display:flex;flex-direction:column;align-items:center;">
-                <a href="SPOTIFY_LINK" target="_blank" rel="noopener" class="link-icon">🎵</a>
+                <a href="https://open.spotify.com/show/7iCSHGnoutNsXlvtIuM6OO" target="_blank" rel="noopener" class="link-icon">🎵</a>
                 <div class="link-label">Spotify</div>
               </div>
               <div style="display:flex;flex-direction:column;align-items:center;">
-                <a href="APPLE_PODCASTS_LINK" target="_blank" rel="noopener" class="link-icon">🎧</a>
+                <a href="https://podcasts.apple.com/us/podcast/imagine-a-world/id1712296912" target="_blank" rel="noopener" class="link-icon">🎧</a>
                 <div class="link-label">Apple</div>
               </div>
               <div style="display:flex;flex-direction:column;align-items:center;">
-                <a href="ARTICLE_LINK" target="_blank" rel="noopener" class="link-icon">📝</a>
-                <div class="link-label">Article</div>
+                <a href="https://knight-hennessy.stanford.edu/podcasts/imagine-a-world" target="_blank" rel="noopener" class="link-icon">📝</a>
+                <div class="link-label">More</div>
               </div>
             </div>
           </div>
 
           <!-- Pear Healthcare Playbook -->
           <div class="podcast-card">
-            <div class="podcast-icon pear">🏥</div>
+            <div class="podcast-icon pear">🍐</div>
             <h3 class="podcast-name">Pear Healthcare Playbook</h3>
-            <p class="podcast-desc">Add podcast description here</p>
+            <p class="podcast-desc">Insights and stories from trailblazing healthcare leaders on how to build from 0 to 1.</p>
             <div class="link-row">
               <div style="display:flex;flex-direction:column;align-items:center;">
-                <a href="SPOTIFY_LINK" target="_blank" rel="noopener" class="link-icon">🎵</a>
+                <a href="https://open.spotify.com/show/2kKsYzKLmdEBejkqn8ruIl" target="_blank" rel="noopener" class="link-icon">🎵</a>
                 <div class="link-label">Spotify</div>
               </div>
               <div style="display:flex;flex-direction:column;align-items:center;">
-                <a href="APPLE_PODCASTS_LINK" target="_blank" rel="noopener" class="link-icon">🎧</a>
+                <a href="https://podcasts.apple.com/us/podcast/pear-healthcare-playbook/id1606987445" target="_blank" rel="noopener" class="link-icon">🎧</a>
                 <div class="link-label">Apple</div>
               </div>
               <div style="display:flex;flex-direction:column;align-items:center;">
-                <a href="ARTICLE_LINK" target="_blank" rel="noopener" class="link-icon">📝</a>
-                <div class="link-label">Article</div>
+                <a href="https://pearhealthcareplaybook.substack.com/" target="_blank" rel="noopener" class="link-icon">📝</a>
+                <div class="link-label">Substack</div>
               </div>
             </div>
           </div>
