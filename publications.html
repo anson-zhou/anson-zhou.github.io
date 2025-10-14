@@ -126,6 +126,7 @@
     "authors": ["V Utti", "T Bikias", "AA Agarwal", "V Bikia", "AY Zhou", "MM Shah", "R Daneshjou"],
     "venue": "Dermatologic Clinics",
     "year": 2025,
+    "type": "journal",
     "abstract": "",
     "tags": []
   },
@@ -135,6 +136,7 @@
     "authors": ["A Fanous", "J Goldberg", "AA Agarwal", "J Lin", "A Zhou", "R Daneshjou", "S Koyejo"],
     "venue": "arXiv preprint arXiv:2502.08177",
     "year": 2025,
+    "type": "preprint",
     "abstract": "",
     "tags": []
   },
@@ -144,6 +146,7 @@
     "authors": ["CM Andrea Cheng", "Justin Zhou", "Chun Hei Ryan Chan", "Connie Chen", "Charlotte Cheng"],
     "venue": "The Ultrasound Journal 16 (32)",
     "year": 2024,
+    "type": "journal",
     "abstract": "",
     "tags": []
   },
@@ -153,6 +156,7 @@
     "authors": ["M Aedla", "CJ Cheng", "AY Zhou", "S Zhang", "J Hsu", "K Hu", "JC Qian", "KV Sompel"],
     "venue": "Children 11 (2), 263",
     "year": 2024,
+    "type": "journal",
     "abstract": "",
     "tags": []
   },
@@ -162,6 +166,7 @@
     "authors": ["HQ Mao", "S Tuffaha", "A Hoke", "AY Zhou", "BP Enzmann", "M James Lan"],
     "venue": "WO Patent 178191A2, 2024",
     "year": 2024,
+    "type": "patent",
     "abstract": "",
     "tags": []
   },
@@ -171,6 +176,7 @@
     "authors": ["M Aedla", "K Sharma", "S Zhang", "J Qian", "C Cheng", "J Hsu", "A Zhou"],
     "venue": "WO Patent 0238164A1, 2024",
     "year": 2024,
+    "type": "patent",
     "abstract": "",
     "tags": []
   },
@@ -180,6 +186,7 @@
     "authors": ["TF Won-Jun Kuk", "Justin Zhou", "Chun Hei Chan", "Kaitlyn Storm", "Charlotte Cheng"],
     "venue": "ACADEMIC EMERGENCY MEDICINE",
     "year": 2024,
+    "type": "abstract",
     "abstract": "",
     "tags": []
   },
@@ -189,6 +196,7 @@
     "authors": ["HQ Mao", "S Tuffaha", "A Hoke", "MJ Lan", "BP Enzmann", "AY Zhou", "AL Wong"],
     "venue": "US Patent 0389926A1, 2023",
     "year": 2023,
+    "type": "patent",
     "abstract": "",
     "tags": []
   },
@@ -198,6 +206,7 @@
     "authors": ["M Aedla", "A Zhou", "K Sompel", "K Hu", "C Cheng", "J Hsu", "J Qian", "S Zhang", "A Ho"],
     "venue": "Journal of Pediatric Gastroenterology and Nutrition 75, 10.1097",
     "year": 2022,
+    "type": "journal",
     "abstract": "",
     "tags": []
   },
@@ -207,6 +216,7 @@
     "authors": ["SL Leibel", "I Tseu", "A Zhou", "A Hodges", "J Yin", "C Bilodeau", "O Goltsis", "M Post"],
     "venue": "JOURNAL OF INVESTIGATIVE MEDICINE 70 (1), 173-173",
     "year": 2022,
+    "type": "abstract",
     "abstract": "",
     "tags": []
   },
@@ -216,6 +226,7 @@
     "authors": ["SL Leibel", "I Tseu", "A Zhou", "A Hodges", "J Yin", "C Bilodeau", "O Goltsis", "M Post"],
     "venue": "Iscience 25 (2)",
     "year": 2022,
+    "type": "journal",
     "abstract": "",
     "tags": []
   },
@@ -225,6 +236,7 @@
     "authors": ["E Lee", "B Enzmann", "T Harris", "A Wong", "S Pinni", "N von Guionneau"],
     "venue": "Plastic and Reconstructive Surgery–Global Open 10 (4S), 57-58",
     "year": 2022,
+    "type": "abstract",
     "abstract": "",
     "tags": []
   },
@@ -234,6 +246,7 @@
     "authors": ["E Lee", "B Enzmann", "T Harris", "A Wong", "S Pinni", "N von Guionneau"],
     "venue": "Plastic and Reconstructive Surgery–Global Open 10 (6S), 121",
     "year": 2022,
+    "type": "abstract",
     "abstract": "",
     "tags": []
   },
@@ -243,6 +256,7 @@
     "authors": ["E Lee", "AL Wong", "S Pinni", "N Von Guionneau", "TGW Harris", "R Kothari"],
     "venue": "Plastic and Reconstructive Surgery–Global Open 9 (10S), 99-100",
     "year": 2021,
+    "type": "abstract",
     "abstract": "",
     "tags": []
   },
@@ -252,6 +266,7 @@
     "authors": ["M Aedla", "A Zhou", "K Sompel", "K Hu", "S Zhang", "J Qian", "C Cheng", "J Hsu"],
     "venue": "Official journal of the American College of Gastroenterology | ACG 116, S592",
     "year": 2021,
+    "type": "abstract",
     "abstract": "",
     "tags": []
   }
@@ -262,25 +277,6 @@
   <script>
     const RAW = JSON.parse(document.getElementById('pubdata').textContent || '[]');
 
-    const TYPE_MAP = {
-      journal: /journal|transactions|rev(iew)?|j\.\s|nature|cell|science|lancet|jama|nejm/i,
-      conference: /proceedings|proc\.|conference|conf\.|icml|neurips|nips|cvpr|eccv|acl|emnlp|kdd|aaai|iclr|chi|sig/i,
-      workshop: /workshop|ws\./i,
-      preprint: /arxiv|biorxiv|medrxiv|preprint/i,
-      patent: /patent|us\s?\d{4,}|wo\s?\d{4,}|ep\s?\d{4,}/i,
-      abstract: /abstract|meeting\s+abstract|poster/i
-    };
-
-    function inferType(p){
-      const hay = [p.venue, p.title].filter(Boolean).join(" · ");
-      for (const [type, regex] of Object.entries(TYPE_MAP)){
-        if (regex.test(hay)) return type;
-      }
-      if (/proceedings|international\s+conference|symposium/i.test(hay)) return 'conference';
-      if (/\bvol\.|\bno\.|\bissue|\bvolume|\bpress\b/i.test(hay)) return 'journal';
-      return 'preprint';
-    }
-
     const data = RAW.map(p => {
       const item = {
         title: p.title || '',
@@ -290,13 +286,8 @@
         year: Number(p.year) || undefined,
         abstract: p.abstract || '',
         tags: Array.isArray(p.tags) ? p.tags : [],
-        type: p.type
+        type: p.type ? String(p.type).toLowerCase() : 'preprint'
       };
-      if (!item.type || !String(item.type).trim()){
-        item.type = inferType(item);
-      } else {
-        item.type = String(item.type).toLowerCase();
-      }
       return item;
     });
 
