@@ -7,65 +7,118 @@
   <meta name="description" content="Publications by Anson Zhou" />
   <style>
     :root{
-      --bg:#ffffff; --fg:#0f172a; --muted:#475569; --card:#f8fafc; --border:#e2e8f0; --accent:#0ea5e9; --tag-bg:#e2f2ff;
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --accent:#0b3d91;
+      --card:#ffffff;
+      --border:#e2e8f0;
+      --shadow:0 8px 30px rgba(2,8,23,.06);
+      --radius:18px;
+      --maxw:960px;
     }
     @media (prefers-color-scheme: dark){
-      :root{ --bg:#0b1220; --fg:#e5e7eb; --muted:#94a3b8; --card:#0f1a2b; --border:#1e293b; --tag-bg:#102a43; }
+      :root{
+        --bg:#0b1220;
+        --text:#e5e7eb;
+        --muted:#94a3b8;
+        --accent:#60a5fa;
+        --card:#0f1a2b;
+        --border:#1e293b;
+        --tag-bg:#102a43;
+      }
     }
-    *{box-sizing:border-box}
-    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Noto Sans"; background:var(--bg); color:var(--fg); line-height:1.55;}
-    .wrap{max-width:1000px; margin:0 auto; padding:32px 16px;}
-    header{margin-bottom:24px}
-    header h1{margin:0 0 6px 0; font-size:clamp(24px,4vw,36px); letter-spacing:-0.01em}
-    header p{margin:0; color:var(--muted)}
-    .filter-block{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:16px 0 18px}
-    .filter-label{font-size:13px; color:var(--muted); margin-right:4px}
-    .chips{display:flex; flex-wrap:wrap; gap:8px}
-    .chip{border:1px solid var(--border); background:transparent; color:var(--muted); padding:6px 10px; border-radius:999px; cursor:pointer; font-size:13px}
-    .chip.active{border-color:var(--accent); color:var(--fg)}
-    .grid{display:grid; gap:14px; grid-template-columns: 1fr}
-    @media (min-width:700px){ .grid{ grid-template-columns: 1fr 1fr } }
-    .pub-card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px; transition:transform .06s ease, box-shadow .06s ease}
-    .pub-card:hover{ transform: translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.08) }
-    .pub-title{margin:0 0 6px 0; font-weight:650; font-size:17px; letter-spacing:-0.01em}
-    .pub-title a{ color:var(--fg); text-decoration:none; border-bottom:1px solid transparent }
-    .pub-title a:hover{ border-bottom-color: var(--accent) }
-    .pub-meta{ font-size:14px; color:var(--muted); margin-bottom:8px }
-    .pub-abstract{ font-size:14px; margin:8px 0 10px; color:var(--fg) }
-    .tagrow{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px }
-    .tag{ font-size:12px; padding:4px 8px; border-radius:999px; background:var(--tag-bg); color:var(--muted); border:1px solid var(--border) }
-    .year-divider{ margin:24px 0 10px; font-weight:700; font-size:16px; color:var(--muted); border-top:1px solid var(--border); padding-top:14px }
-    .toolbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:4px}
-    .search{flex:1; min-width:200px}
-    .search input{width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:transparent; color:var(--fg)}
-    .clear-btn{border:none; background:transparent; color:var(--muted); cursor:pointer; font-size:13px; text-decoration:underline}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;}
+    header > div:first-child{font-weight:800;font-size:18px}
+    nav a{margin-left:16px;font-weight:600}
+    .content-card{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:var(--radius);padding:28px;}
+    h1{margin:0 0 6px 0;font-size:28px;letter-spacing:-0.01em}
+    .subtitle{color:var(--muted);margin-top:6px}
+    .filter-block{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding-top:12px}
+    .filter-label{font-size:13px;color:var(--muted);margin-right:4px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{border:1px solid var(--border);background:transparent;color:var(--muted);padding:6px 10px;border-radius:999px;cursor:pointer;font-size:13px;transition:all .1s}
+    .chip:hover{border-color:var(--accent);color:var(--text)}
+    .chip.active{border-color:var(--accent);color:var(--text);background:rgba(11,61,145,.05)}
+    .grid{display:grid;gap:14px;grid-template-columns:1fr}
+    @media (min-width:700px){.grid{grid-template-columns:1fr 1fr}}
+    .pub-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;transition:transform .06s ease,box-shadow .06s ease}
+    .pub-card:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .pub-title{margin:0 0 6px 0;font-weight:650;font-size:17px;letter-spacing:-0.01em}
+    .pub-title a{color:var(--text);border-bottom:1px solid transparent}
+    .pub-title a:hover{border-bottom-color:var(--accent)}
+    .pub-meta{font-size:14px;color:var(--muted);margin-bottom:8px}
+    .pub-abstract{font-size:14px;margin:8px 0 10px;color:var(--text)}
+    .tagrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .tag{font-size:12px;padding:4px 8px;border-radius:999px;background:rgba(11,61,145,.08);color:var(--muted);border:1px solid var(--border)}
+    .year-divider{margin:24px 0 10px;font-weight:700;font-size:16px;color:var(--muted);border-top:1px solid var(--border);padding-top:14px}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
+    .search{flex:1;min-width:200px}
+    .search input{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:transparent;color:var(--text);font-size:14px}
+    .search input::placeholder{color:var(--muted)}
+    .clear-btn{border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:13px;text-decoration:underline;transition:color .1s}
+    .clear-btn:hover{color:var(--text)}
+    footer{margin:36px 0;color:var(--muted);font-size:14px;text-align:center}
+    @media (max-width:720px){
+      nav{display:none}
+      .toolbar{flex-direction:column}
+      .search{min-width:unset}
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
+  <div class="wrap">
+    <!-- HEADER with nav (same as index) -->
     <header>
+      <div>Anson Zhou</div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/experiences.html">Experience</a>
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>        
+        <a href="/media.html">Media</a>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT CARD -->
+    <main class="content-card">
       <h1>Publications</h1>
-      <p>Selected journal articles, preprints, abstracts, and patents.</p>
+      <p class="subtitle">Selected journal articles, preprints, abstracts, and patents.</p>
+      
+      <!-- SEARCH AND CLEAR -->
       <div class="toolbar">
         <div class="search"><input id="q" type="search" placeholder="Search title, authors, venue…" aria-label="Search publications"></div>
         <button id="clear" class="clear-btn" type="button">Clear filters</button>
       </div>
-    </header>
 
-    <!-- Filters -->
-    <div class="filter-block">
-      <span class="filter-label">Type:</span>
-      <div id="typeChips" class="chips"></div>
-    </div>
-    <div class="filter-block">
-      <span class="filter-label">Tags:</span>
-      <div id="tagChips" class="chips"></div>
-    </div>
+      <!-- TYPE FILTERS -->
+      <div class="filter-block">
+        <span class="filter-label">Type:</span>
+        <div id="typeChips" class="chips"></div>
+      </div>
 
-    <!-- Cards mount -->
-    <div id="pubs" class="grid" aria-live="polite"></div>
-  </main>
+      <!-- TAG FILTERS -->
+      <div class="filter-block">
+        <span class="filter-label">Tags:</span>
+        <div id="tagChips" class="chips"></div>
+      </div>
 
+      <!-- PUBLICATIONS GRID -->
+      <div id="pubs" class="grid" aria-live="polite"></div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      © <span id="y"></span> Anson Zhou ·
+      <a href="https://anson-zhou.github.io" target="_blank" rel="noopener">anson-zhou.github.io</a>
+    </footer>
+  </div>
+
+  <!-- DATA -->
   <script type="application/json" id="pubdata">
 [
   {
@@ -206,6 +259,7 @@
 ]
   </script>
 
+  <!-- LOGIC -->
   <script>
     const RAW = JSON.parse(document.getElementById('pubdata').textContent || '[]');
 
@@ -392,6 +446,10 @@
 
     buildChips();
     render();
+  </script>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
