@@ -1,3 +1,227 @@
-<p>
-  Coming soon!
-</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research • Anson Zhou</title>
+  <meta name="description" content="Research experience of Anson Zhou" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --accent:#0b3d91;
+      --card:#ffffff;
+      --border:#e2e8f0;
+      --shadow:0 8px 30px rgba(2,8,23,.06);
+      --radius:18px;
+      --maxw:960px;
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;}
+    header > div:first-child{font-weight:800;font-size:18px}
+    nav a{margin-left:16px;font-weight:600}
+    .content-card{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:var(--radius);padding:28px;}
+    h1{margin:0 0 6px 0;font-size:28px;letter-spacing:-0.01em}
+    .subtitle{color:var(--muted);margin-top:6px;margin-bottom:32px}
+    
+    .lab-section{margin-bottom:48px;padding-bottom:48px;border-bottom:2px solid var(--border)}
+    .lab-section:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    
+    .lab-header{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start;margin-bottom:24px}
+    .lab-logo{width:200px;height:200px;border-radius:12px;border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+    .lab-logo img{width:100%;height:100%;object-fit:cover}
+    
+    .lab-info{flex:1}
+    .lab-name{font-size:22px;font-weight:700;margin:0 0 8px 0}
+    .lab-name a{color:var(--text);border-bottom:1px solid transparent}
+    .lab-name a:hover{border-bottom-color:var(--accent)}
+    .lab-description{color:var(--text);margin:8px 0 0 0;line-height:1.6}
+    
+    .pubs-subsection{margin-top:20px}
+    .subsection-title{font-size:16px;font-weight:650;color:var(--muted);margin:0 0 12px 0}
+    
+    .pub-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;transition:transform .06s ease,box-shadow .06s ease}
+    .pub-card:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .pub-card:last-child{margin-bottom:0}
+    .pub-title{margin:0 0 6px 0;font-weight:650;font-size:17px;letter-spacing:-0.01em}
+    .pub-title a{color:var(--text);border-bottom:1px solid transparent}
+    .pub-title a:hover{border-bottom-color:var(--accent)}
+    .pub-meta{font-size:14px;color:var(--muted);word-wrap:break-word;white-space:normal}
+    
+    .no-pubs{color:var(--muted);font-style:italic;font-size:14px}
+    
+    footer{margin:36px 0;color:var(--muted);font-size:14px;text-align:center}
+    
+    @media (max-width:720px){
+      nav{display:none}
+      .lab-header{grid-template-columns:100px 1fr;gap:16px}
+      .lab-logo{width:100px;height:100px}
+      .lab-name{font-size:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>Anson Zhou</div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/experiences.html">Experience</a>
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>        
+        <a href="/media.html">Media</a>
+      </nav>
+    </header>
+
+    <main class="content-card">
+      <h1>Research</h1>
+      <p class="subtitle">Research experiences and associated publications</p>
+
+      <!-- DANESHJOU LAB -->
+      <section class="lab-section">
+        <div class="lab-header">
+          <div class="lab-logo">
+            <img src="images/daneshjou-lab.png" alt="Daneshjou Lab">
+          </div>
+          <div class="lab-info">
+            <h2 class="lab-name"><a href="https://www.daneshjoulab.com/" target="_blank" rel="noopener">Daneshjou Lab</a></h2>
+            <p class="lab-description">
+              Description of your research work in the Daneshjou Lab. Add details about the projects you worked on, methodologies used, and key contributions to the lab's research in AI for dermatology and healthcare.
+            </p>
+          </div>
+        </div>
+        <div class="pubs-subsection">
+          <h3 class="subsection-title">Associated Publications</h3>
+          <article class="pub-card">
+            <h4 class="pub-title">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ETbbsnoAAAAJ&sortby=pubdate&citation_for_view=ETbbsnoAAAAJ:8k81kl-MbHgC" target="_blank" rel="noopener">Artificial Intelligence in Dermatology Research and Drug Discovery</a>
+            </h4>
+            <div class="pub-meta">V Utti, T Bikias, AA Agarwal, V Bikia, <strong>AY Zhou</strong>, MM Shah, R Daneshjou • Dermatologic Clinics • Journal • 2025</div>
+          </article>
+          <article class="pub-card">
+            <h4 class="pub-title">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ETbbsnoAAAAJ&sortby=pubdate&citation_for_view=ETbbsnoAAAAJ:5nxA0vEk-isC" target="_blank" rel="noopener">SycEval: Evaluating LLM Sycophancy</a>
+            </h4>
+            <div class="pub-meta">A Fanous, J Goldberg, AA Agarwal, J Lin, <strong>A Zhou</strong>, R Daneshjou, S Koyejo • arXiv preprint arXiv:2502.08177 • Preprint • 2025</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ADELI LAB -->
+      <section class="lab-section">
+        <div class="lab-header">
+          <div class="lab-logo">
+            <img src="images/adeli-lab.png" alt="Adeli Lab">
+          </div>
+          <div class="lab-info">
+            <h2 class="lab-name"><a href="https://stai.stanford.edu/" target="_blank" rel="noopener">Adeli Lab</a></h2>
+            <p class="lab-description">
+              Description of your research work in the Adeli Lab. Add details about the projects you worked on, methodologies used, and key contributions to the lab's research in AI and computational imaging.
+            </p>
+          </div>
+        </div>
+        <div class="pubs-subsection">
+          <h3 class="subsection-title">Associated Publications</h3>
+          <p class="no-pubs">Publications forthcoming</p>
+        </div>
+      </section>
+
+      <!-- MAO LAB -->
+      <section class="lab-section">
+        <div class="lab-header">
+          <div class="lab-logo">
+            <img src="images/mao-lab.png" alt="Mao Lab">
+          </div>
+          <div class="lab-info">
+            <h2 class="lab-name"><a href="https://maogroup.jhu.edu/" target="_blank" rel="noopener">Mao Lab</a></h2>
+            <p class="lab-description">
+              Description of your research work in the Mao Lab. Add details about the projects you worked on, methodologies used, and key contributions to the lab's research in biomedical engineering and nerve regeneration.
+            </p>
+          </div>
+        </div>
+        <div class="pubs-subsection">
+          <h3 class="subsection-title">Associated Publications</h3>
+          <article class="pub-card">
+            <h4 class="pub-title">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ETbbsnoAAAAJ&sortby=pubdate&citation_for_view=ETbbsnoAAAAJ:0EnyYjriUFMC" target="_blank" rel="noopener">Nanofiber nerve caps to inhibit neuroma formation</a>
+            </h4>
+            <div class="pub-meta">HQ Mao, S Tuffaha, A Hoke, <strong>AY Zhou</strong>, BP Enzmann, M James Lan • WO Patent 178191A2, 2024 • Patent • 2024</div>
+          </article>
+          <article class="pub-card">
+            <h4 class="pub-title">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ETbbsnoAAAAJ&sortby=pubdate&citation_for_view=ETbbsnoAAAAJ:roLk4NBRz8UC" target="_blank" rel="noopener">Biodegradable nanofiber conical conduits for nerve repair</a>
+            </h4>
+            <div class="pub-meta">HQ Mao, S Tuffaha, A Hoke, MJ Lan, BP Enzmann, <strong>AY Zhou</strong>, AL Wong • US Patent 0389926A1, 2023 • Patent • 2023</div>
+          </article>
+          <article class="pub-card">
+            <h4 class="pub-title">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ETbbsnoAAAAJ&sortby=pubdate&citation_for_view=ETbbsnoAAAAJ:W7OEmFMy1HYC" target="_blank" rel="noopener">P18. A NOVEL BIOENGINEERED CONDUIT REDUCES NEUROMA FORMATION AFTER TARGETED MUSCLE REINNERVATION</a>
+            </h4>
+            <div class="pub-meta">E Lee, B Enzmann, T Harris, A Wong, S Pinni, N von Guionneau • Plastic and Reconstructive Surgery–Global Open 10 (4S), 57-58 • Abstract • 2022</div>
+          </article>
+          <article class="pub-card">
+            <h4 class="pub-title">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ETbbsnoAAAAJ&sortby=pubdate&citation_for_view=ETbbsnoAAAAJ:eQOLeE2rZwMC" target="_blank" rel="noopener">QS51. Guiding the Way: The Use of a Bioengineered Conduit Reduces Neuroma Formation and Associated Pain Behaviors</a>
+            </h4>
+            <div class="pub-meta">E Lee, B Enzmann, T Harris, A Wong, S Pinni, N von Guionneau • Plastic and Reconstructive Surgery–Global Open 10 (6S), 121 • Abstract • 2022</div>
+          </article>
+          <article class="pub-card">
+            <h4 class="pub-title">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ETbbsnoAAAAJ&sortby=pubdate&citation_for_view=ETbbsnoAAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener">Improving nerve coaptation outcomes in targeted muscle reinnervation: a novel bioengineered device</a>
+            </h4>
+            <div class="pub-meta">E Lee, AL Wong, S Pinni, N Von Guionneau, TGW Harris, R Kothari • Plastic and Reconstructive Surgery–Global Open 9 (10S), 99-100 • Abstract • 2021</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SANFORD BURNHAM PREBYS -->
+      <section class="lab-section">
+        <div class="lab-header">
+          <div class="lab-logo">
+            <img src="images/sbp-logo.png" alt="Sanford Burnham Prebys">
+          </div>
+          <div class="lab-info">
+            <h2 class="lab-name"><a href="https://sbpdiscovery.org/" target="_blank" rel="noopener">Sanford Burnham Prebys Medical Discovery Institute</a></h2>
+            <p class="lab-description">
+              Description of your research work at Sanford Burnham Prebys Medical Discovery Institute. Add details about the projects you worked on, methodologies used, and key contributions to the institute's research in regenerative medicine and stem cell biology.
+            </p>
+          </div>
+        </div>
+        <div class="pubs-subsection">
+          <h3 class="subsection-title">Associated Publications</h3>
+          <article class="pub-card">
+            <h4 class="pub-title">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ETbbsnoAAAAJ&sortby=pubdate&citation_for_view=ETbbsnoAAAAJ:zYLM7Y9cAGgC" target="_blank" rel="noopener">Metabolomic profiling of human pluripotent stem cell differentiation into lung progenitors</a>
+            </h4>
+            <div class="pub-meta">SL Leibel, I Tseu, <strong>A Zhou</strong>, A Hodges, J Yin, C Bilodeau, O Goltsis, M Post • Iscience 25 (2) • Journal • 2022</div>
+          </article>
+          <article class="pub-card">
+            <h4 class="pub-title">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ETbbsnoAAAAJ&sortby=pubdate&citation_for_view=ETbbsnoAAAAJ:Tyk-4Ss8FVUC" target="_blank" rel="noopener">METABOLITES IMPORTANT IN THE DIFFERENTIATION OF HUMAN PLURIPOTENT STEM CELLS TO LUNG PROGENITOR CELLS</a>
+            </h4>
+            <div class="pub-meta">SL Leibel, I Tseu, <strong>A Zhou</strong>, A Hodges, J Yin, C Bilodeau, O Goltsis, M Post • JOURNAL OF INVESTIGATIVE MEDICINE 70 (1), 173-173 • Abstract • 2022</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PUBLICATIONS LINK -->
+      <div style="margin-top:32px;padding-top:24px;border-top:2px solid var(--border);color:var(--muted)">
+        See full list of publications <a href="https://anson-zhou.github.io/publications.html">here</a>
+      </div>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Anson Zhou ·
+      <a href="https://anson-zhou.github.io" target="_blank" rel="noopener">anson-zhou.github.io</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
