@@ -50,7 +50,7 @@
     .pub-title{margin:0 0 6px 0;font-weight:650;font-size:17px;letter-spacing:-0.01em}
     .pub-title a{color:var(--text);border-bottom:1px solid transparent}
     .pub-title a:hover{border-bottom-color:var(--accent)}
-    .pub-meta{font-size:14px;color:var(--muted);margin-bottom:8px}
+    .pub-meta{font-size:14px;color:var(--muted);margin-bottom:8px;word-wrap:break-word;white-space:normal}
     .pub-abstract{font-size:14px;margin:8px 0 10px;color:var(--text)}
     .tagrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
     .tag{font-size:12px;padding:4px 8px;border-radius:999px;background:rgba(11,61,145,.08);color:var(--muted);border:1px solid var(--border)}
@@ -76,7 +76,7 @@
       <div>Anson Zhou</div>
       <nav>
         <a href="/">Home</a>
-        <a href="/experience.html">Experience</a>
+        <a href="/experiences.html">Experience</a>
         <a href="/research.html">Research</a>
         <a href="/publications.html">Publications</a>        
         <a href="/media.html">Media</a>
@@ -100,11 +100,13 @@
         <div id="typeChips" class="chips"></div>
       </div>
 
-      <!-- TAG FILTERS -->
+      <!-- TAG FILTERS (COMMENTED OUT) -->
+      <!--
       <div class="filter-block">
         <span class="filter-label">Tags:</span>
         <div id="tagChips" class="chips"></div>
       </div>
+      -->
 
       <!-- PUBLICATIONS GRID -->
       <div id="pubs" class="grid" aria-live="polite"></div>
@@ -292,15 +294,15 @@
     });
 
     const allTypes = Array.from(new Set(data.map(d => d.type))).sort();
-    const allTags  = Array.from(new Set(data.flatMap(d => d.tags || []))).sort((a,b)=>a.localeCompare(b));
+    // const allTags  = Array.from(new Set(data.flatMap(d => d.tags || []))).sort((a,b)=>a.localeCompare(b));
 
     const typeChips = document.getElementById('typeChips');
-    const tagChips  = document.getElementById('tagChips');
+    // const tagChips  = document.getElementById('tagChips');
     const qInput    = document.getElementById('q');
     const clearBtn  = document.getElementById('clear');
 
     let activeTypes = new Set();
-    let activeTags  = new Set();
+    // let activeTags  = new Set();
     let query = '';
 
     function chip(label, group){
@@ -309,10 +311,12 @@
       el.type = 'button';
       el.textContent = label;
       el.addEventListener('click', () => {
-        const set = group === 'type' ? activeTypes : activeTags;
-        set.has(label) ? set.delete(label) : set.add(label);
-        el.classList.toggle('active');
-        render();
+        const set = group === 'type' ? activeTypes : null; // activeTags;
+        if (set) {
+          set.has(label) ? set.delete(label) : set.add(label);
+          el.classList.toggle('active');
+          render();
+        }
       });
       return el;
     }
@@ -328,20 +332,23 @@
       typeChips.appendChild(allTypeBtn);
       allTypes.forEach(t => typeChips.appendChild(chip(cap(t), 'type')));
 
-      tagChips.innerHTML = '';
-      const allTagBtn = chip('All', 'tag');
-      allTagBtn.addEventListener('click', ()=>{
-        activeTags.clear();
-        [...tagChips.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
-        render();
-      });
-      tagChips.appendChild(allTagBtn);
-      allTags.forEach(t => tagChips.appendChild(chip(t, 'tag')));
+      // tagChips.innerHTML = '';
+      // const allTagBtn = chip('All', 'tag');
+      // allTagBtn.addEventListener('click', ()=>{
+      //   activeTags.clear();
+      //   [...tagChips.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
+      //   render();
+      // });
+      // tagChips.appendChild(allTagBtn);
+      // allTags.forEach(t => tagChips.appendChild(chip(t, 'tag')));
     }
 
     qInput.addEventListener('input', e => { query = e.target.value.trim().toLowerCase(); render(); });
     clearBtn.addEventListener('click', () => {
-      activeTypes.clear(); activeTags.clear(); query=''; qInput.value='';
+      activeTypes.clear(); 
+      // activeTags.clear(); 
+      query=''; 
+      qInput.value='';
       document.querySelectorAll('.chip.active').forEach(c=>c.classList.remove('active'));
       render();
     });
@@ -359,9 +366,9 @@
       if (activeTypes.size){
         items = items.filter(d => activeTypes.has(cap(d.type)));
       }
-      if (activeTags.size){
-        items = items.filter(d => d.tags?.some(t => activeTags.has(t)));
-      }
+      // if (activeTags.size){
+      //   items = items.filter(d => d.tags?.some(t => activeTags.has(t)));
+      // }
       if (query){
         items = items.filter(d => {
           const hay = [
@@ -413,7 +420,9 @@
       const typeLabel = p.type ? cap(p.type) : '';
       const authors = (p.authors||[]).join(', ');
       const bits = [authors, p.venue, typeLabel].filter(Boolean).join(' • ');
-      meta.textContent = bits;
+      // Bold variations of "Zhou" in author list
+      const boldedBits = bits.replace(/\b(A\.?\s*Y?\.?\s*Zhou|AY\s*Zhou|A\s*Zhou)\b/gi, '<strong>$1</strong>');
+      meta.innerHTML = boldedBits;
 
       const abs = document.createElement('p');
       abs.className = 'pub-abstract';
