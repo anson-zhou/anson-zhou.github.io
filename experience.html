@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience • Anson Zhou</title>
+  <meta name="description" content="Professional and academic experience of Anson Zhou" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --accent:#0b3d91;
+      --card:#ffffff;
+      --border:#e2e8f0;
+      --shadow:0 8px 30px rgba(2,8,23,.06);
+      --radius:18px;
+      --maxw:960px;
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;}
+    header > div:first-child{font-weight:800;font-size:18px}
+    nav a{margin-left:16px;font-weight:600}
+    .content-card{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:var(--radius);padding:28px;}
+    h1{margin:0 0 6px 0;font-size:28px;letter-spacing:-0.01em}
+    .subtitle{color:var(--muted);margin-top:6px;margin-bottom:32px}
+    
+    .section{margin-bottom:48px}
+    .section:last-child{margin-bottom:0}
+    .section-title{font-weight:700;font-size:20px;margin:0 0 20px 0;color:var(--text);border-bottom:2px solid var(--border);padding-bottom:8px}
+    
+    .exp-item{display:grid;grid-template-columns:80px 1fr;gap:20px;align-items:start;padding:20px 0;border-bottom:1px solid var(--border)}
+    .exp-item:last-child{border-bottom:none}
+    .exp-item:first-child{padding-top:0}
+    
+    .exp-logo{width:80px;height:80px;border-radius:12px;border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+    .exp-logo img{width:100%;height:100%;object-fit:contain;padding:8px}
+    
+    .exp-content{flex:1}
+    .exp-org{font-size:18px;font-weight:700;color:var(--text);margin:0 0 4px 0}
+    .exp-role{font-size:16px;color:var(--text);margin:0 0 4px 0}
+    .exp-period{font-size:14px;color:var(--muted);margin:0 0 8px 0}
+    .exp-details{font-size:14px;color:var(--muted);margin:6px 0 0 0;line-height:1.5}
+    
+    footer{margin:36px 0;color:var(--muted);font-size:14px;text-align:center}
+    
+    @media (max-width:720px){
+      nav{display:none}
+      .exp-item{grid-template-columns:60px 1fr;gap:16px}
+      .exp-logo{width:60px;height:60px}
+      .exp-org{font-size:16px}
+      .exp-role{font-size:15px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>Anson Zhou</div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/experiences.html">Experience</a>
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>        
+        <a href="/media.html">Media</a>
+      </nav>
+    </header>
+
+    <main class="content-card">
+      <h1>Experience</h1>
+      <p class="subtitle">Professional and academic background</p>
+
+      <!-- EDUCATION SECTION -->
+      <section class="section">
+        <h2 class="section-title">Education</h2>
+        
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/stanford-med-logo.png" alt="Stanford School of Medicine">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Stanford University School of Medicine</h3>
+            <div class="exp-role">MD Candidate</div>
+            <div class="exp-period">2024 – Present</div>
+            <div class="exp-details">Physician-Scientist Training Program, Concentrations: Informatics & Data-driven Medicine, Surgery</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/stanford-gsb-logo.png" alt="Stanford Graduate School of Business">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Stanford University Graduate School of Business</h3>
+            <div class="exp-role">MBA Candidate</div>
+            <div class="exp-details">Deferred Enrollment Program</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/jhu-logo.png" alt="Johns Hopkins University">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Johns Hopkins University</h3>
+            <div class="exp-role">BS, Biomedical Engineering</div>
+            <div class="exp-period">2015 – 2019</div>
+            <div class="exp-details">General Honors & Departmental Honors in Applied Mathematics and Statistics</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INDUSTRY SECTION -->
+      <section class="section">
+        <h2 class="section-title">Industry</h2>
+        
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/microsoft-logo.png" alt="Microsoft">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Microsoft Research</h3>
+            <div class="exp-role">Research Intern, Health Futures</div>
+            <div class="exp-period">2025</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/schrodinger-logo.png" alt="Schrödinger">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Schrödinger</h3>
+            <div class="exp-role">Pipeline Strategist</div>
+            <div class="exp-period">2023</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/invive-logo.png" alt="Invive">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Invive</h3>
+            <div class="exp-role">Market Intelligence Intern</div>
+            <div class="exp-period">2023</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INVESTING AND CONSULTING SECTION -->
+      <section class="section">
+        <h2 class="section-title">Investing and Consulting</h2>
+        
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/pear-logo.png" alt="Pear VC">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Pear VC</h3>
+            <div class="exp-role">Venture Fellow, Healthcare + Biotech</div>
+            <div class="exp-period">2025 – Present</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/bain-logo.png" alt="Bain & Company">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Bain & Company</h3>
+            <div class="exp-role">Associate Consultant, Private Equity</div>
+            <div class="exp-period">2023 – 2024</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/arkitekt-logo.png" alt="Arkitekt Ventures">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Arkitekt Ventures</h3>
+            <div class="exp-role">Venture Fellow</div>
+            <div class="exp-period">2023 – 2024</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/jhtv-logo.png" alt="Johns Hopkins Technology Ventures">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Johns Hopkins Technology Ventures</h3>
+            <div class="exp-role">Commercialization Fellow</div>
+            <div class="exp-period">2020 – 2023</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img src="images/healthadvances-logo.png" alt="Health Advances">
+          </div>
+          <div class="exp-content">
+            <h3 class="exp-org">Health Advances</h3>
+            <div class="exp-role">Analyst Intern</div>
+            <div class="exp-period">2022</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Anson Zhou ·
+      <a href="https://anson-zhou.github.io" target="_blank" rel="noopener">anson-zhou.github.io</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
